@@ -16,8 +16,9 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
+              height: Get.height / 5,
               child: Stack(
-                alignment: AlignmentDirectional.topStart,
+                alignment: AlignmentDirectional.center,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,6 +47,12 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Container(
+                    child: SvgPicture.asset(
+                      circlesBG,
+                      fit: BoxFit.cover,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -54,8 +61,8 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(0xFFF6F7FB),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
                 ),
               ),
               child: Column(
@@ -63,14 +70,12 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(
-                      bottom: 20,
-                    ),
+                    margin: const EdgeInsets.only(bottom: 20, left: 20),
                     child: Text(
                       'All Rooms',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: Get.width / 15,
+                        color: Color(0xFF022D62),
+                        fontSize: Get.width / 18,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -78,25 +83,74 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RoomeTile(width: 2, height: 2),
-                      RoomeTile(width: 2, height: 2),
+                      RoomeTile(
+                        img: 'assets/bed.svg',
+                        roomName: 'Bed Room',
+                        lights: '4 Lights',
+                        onTap: () {},
+                      ),
+                      RoomeTile(
+                        img: 'assets/room.svg',
+                        roomName: 'Bed Room',
+                        onTap: () {},
+                        lights: '2 Lights',
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RoomeTile(width: 2, height: 2),
-                      RoomeTile(width: 2, height: 2),
+                      RoomeTile(
+                        img: 'assets/kitchen.svg',
+                        roomName: 'Kitchen',
+                        onTap: () {},
+                        lights: '5 Lights',
+                      ),
+                      RoomeTile(
+                        img: 'assets/bathtube.svg',
+                        roomName: 'Bathroom',
+                        onTap: () {},
+                        lights: '1 Lights',
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RoomeTile(width: 2, height: 2),
-                      RoomeTile(width: 2, height: 2),
+                      RoomeTile(
+                        img: 'assets/house.svg',
+                        roomName: 'Outdoor',
+                        onTap: () {},
+                        lights: '5 Lights',
+                      ),
+                      RoomeTile(
+                        img: 'assets/balcony.svg',
+                        roomName: 'Balcony',
+                        onTap: () {},
+                        lights: '2 Lights',
+                      ),
                     ],
                   ),
                 ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      child: SvgPicture.asset('assets/bulb.svg'),
+                    ),
+                    Container(
+                      child: SvgPicture.asset('assets/feather-home.svg'),
+                    ),
+                    Container(
+                      child: SvgPicture.asset('assets/feather-settings.svg'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
