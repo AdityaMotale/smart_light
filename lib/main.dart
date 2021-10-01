@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_light/views/homePage.dart';
+import 'package:smart_light/views/lightsPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Smart Light',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: LightsPage(),
     );
   }
 }
