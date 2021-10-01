@@ -17,10 +17,8 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               child: Stack(
-                
                 alignment: AlignmentDirectional.topStart,
                 children: [
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
