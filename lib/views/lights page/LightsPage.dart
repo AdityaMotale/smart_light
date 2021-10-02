@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_light/core/widgets/bottomNavBar.dart';
@@ -30,51 +31,56 @@ class LightPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Row(
+                            AnimationConfiguration.synchronized(
+                              child: SlideAnimation(
+                                duration: Duration(seconds: 1),
+                                child: Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            margin: const EdgeInsets.fromLTRB(
+                                              20,
+                                              55,
+                                              0,
+                                              20,
+                                            ),
+                                            child: SvgPicture.asset(
+                                              'assets/ionic-md-arrow-round-back.svg',
+                                              height: 20,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            Get.arguments['room'],
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 30),
+                                          ),
+                                        ],
+                                      ),
                                       Container(
-                                        margin: const EdgeInsets.fromLTRB(
-                                          20,
-                                          55,
-                                          0,
-                                          20,
+                                        margin: const EdgeInsets.only(
+                                          top: 20,
+                                          left: 40,
                                         ),
-                                        child: SvgPicture.asset(
-                                          'assets/ionic-md-arrow-round-back.svg',
-                                          height: 20,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        Get.arguments['room'],
-                                        style: TextStyle(
-                                            color: Colors.white,
+                                        child: Text(
+                                          Get.arguments['lights'],
+                                          style: TextStyle(
+                                            color: Color(0xffFFA435),
+                                            fontSize: 25,
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 30),
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      top: 20,
-                                      left: 40,
-                                    ),
-                                    child: Text(
-                                      Get.arguments['lights'],
-                                      style: TextStyle(
-                                        color: Color(0xffFFA435),
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                             Container(
@@ -136,28 +142,34 @@ class LightPage extends StatelessWidget {
                   ),
                   Container(
                     height: Get.height / 11,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        LightSwitches(
-                          img: 'assets/surface1.svg',
-                          textColor: Color(0xFF022D62),
-                          color: Colors.white,
-                          switchName: 'Main Light',
+                    child: AnimationConfiguration.staggeredList(
+                      position: 0,
+                      child: FadeInAnimation(
+                        duration: Duration(seconds: 1),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            LightSwitches(
+                              img: 'assets/surface1.svg',
+                              textColor: Color(0xFF022D62),
+                              color: Colors.white,
+                              switchName: 'Main Light',
+                            ),
+                            LightSwitches(
+                              img: 'assets/furniture-and-household.svg',
+                              textColor: Colors.white,
+                              color: Color(0xFF022D62),
+                              switchName: 'Desk Light',
+                            ),
+                            LightSwitches(
+                              img: 'assets/bed (1).svg',
+                              textColor: Color(0xFF022D62),
+                              color: Colors.white,
+                              switchName: 'Bed Light',
+                            ),
+                          ],
                         ),
-                        LightSwitches(
-                          img: 'assets/furniture-and-household.svg',
-                          textColor: Colors.white,
-                          color: Color(0xFF022D62),
-                          switchName: 'Desk Light',
-                        ),
-                        LightSwitches(
-                          img: 'assets/bed (1).svg',
-                          textColor: Color(0xFF022D62),
-                          color: Colors.white,
-                          switchName: 'Bed Light',
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
