@@ -4,6 +4,6 @@ Assignment for the Folks Developers(The TouchStone Foundation)
 
 ###
 
-|              App Preview             |             Course Preview           |
+|              Home Page              |             Lights Page           |
 | :----------------------------------: | :----------------------------------: |
 | ![Home](assets/home.png) | ![Lights](assets/lights.png) 
