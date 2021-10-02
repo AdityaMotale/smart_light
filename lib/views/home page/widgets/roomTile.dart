@@ -94,8 +94,8 @@ class RoomTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.all(16),
-        width: Get.width / 2.8,
+        margin: const EdgeInsets.all(13),
+        width: Get.width / 2.6,
         height: Get.height / 5.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -129,12 +129,15 @@ class RoomTile extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                       fontSize: 20),
                 ),
-                Text(
-                  lights,
-                  style: TextStyle(
-                      color: Colors.amber,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  child: Text(
+                    lights,
+                    style: TextStyle(
+                        color: Colors.amber,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15),
+                  ),
                 ),
               ],
             ),

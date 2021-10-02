@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:smart_light/views/widgets/roomTile.dart';
+import 'package:smart_light/core/widgets/bottomNavBar.dart';
+import 'package:smart_light/views/home%20page/widgets/roomTile.dart';
+import 'package:smart_light/views/lights%20page/LightsPage.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,6 +14,11 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              margin: const EdgeInsets.only(
+                top: 10,
+                right: 5,
+                left: 5,
+              ),
               height: Get.height / 5,
               child: Stack(
                 alignment: AlignmentDirectional.center,
@@ -83,15 +90,21 @@ class HomePage extends StatelessWidget {
                     children: [
                       RoomTile(
                         lights: '4 Lights',
-                        onTap: () => print("Bed Room"),
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '4 Lights',
+                          'room': '\nBed\nRoom'
+                        }),
                         img: 'assets/bed.svg',
                         roomName: 'Bed Room',
                       ),
                       RoomTile(
                         lights: '2 Lights',
-                        onTap: () => print("Bed Room"),
                         img: 'assets/room.svg',
-                        roomName: 'Living Room',
+                        roomName: 'LivingRoom',
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '2 Lights',
+                          'room': '\nLiving\nRoom'
+                        }),
                       )
                     ],
                   ),
@@ -100,17 +113,21 @@ class HomePage extends StatelessWidget {
                     children: [
                       RoomTile(
                         lights: '5 Lights',
-                        onTap: () => Get.to(
-                          () => HomePage(),
-                        ),
                         img: 'assets/kitchen.svg',
                         roomName: 'Kitchen',
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '5 Lights',
+                          'room': '\nKitchen'
+                        }),
                       ),
                       RoomTile(
-                        lights: '1 Lights',
-                        onTap: () => print("Bed Room"),
+                        lights: '1 Light',
                         img: 'assets/bathtube.svg',
                         roomName: 'Bathroom',
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '1 Light',
+                          'room': '\nBathroom'
+                        }),
                       )
                     ],
                   ),
@@ -119,49 +136,28 @@ class HomePage extends StatelessWidget {
                     children: [
                       RoomTile(
                         lights: '5 Lights',
-                        onTap: () => print("Bed Room"),
                         img: 'assets/house.svg',
                         roomName: 'Outdoor',
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '5 Lights',
+                          'room': '\nOutdoor'
+                        }),
                       ),
                       RoomTile(
                         lights: '2 Lights',
-                        onTap: () => print("Bed Room"),
                         img: 'assets/balcony.svg',
                         roomName: 'Balcony',
+                        onTap: () => Get.to(() => LightPage(), arguments: {
+                          'lights': '2 Lights',
+                          'room': '\nBalcony'
+                        }),
                       )
                     ],
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () => print("bulb"),
-                      child: Container(
-                        child: SvgPicture.asset('assets/bulb.svg'),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => print("Home"),
-                      child: Container(
-                        child: SvgPicture.asset('assets/feather-home.svg'),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => print("Settings"),
-                      child: Container(
-                        child: SvgPicture.asset('assets/feather-settings.svg'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            bottomNavBar(),
           ],
         ),
       ),

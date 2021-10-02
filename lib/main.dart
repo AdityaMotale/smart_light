@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore: unused_import
-import 'package:smart_light/views/testHome(F).dart';
-import 'package:smart_light/views/HomePage.dart';
+import 'package:smart_light/views/home%20page/HomePage.dart';
 
 void main() {
   runApp(MyApp());
