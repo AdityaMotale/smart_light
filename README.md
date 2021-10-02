@@ -8,7 +8,7 @@ Assignment for the Folks Developers (The TouchStone Foundation).
 | :----------------------------------: | :----------------------------------: |
 | ![Home](assets/home.png) | ![Lights](assets/lights.png) 
 
-### Librires I've used
+### Packages I've used
 
 1. Get
     - For State Management
