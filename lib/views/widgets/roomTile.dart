@@ -17,12 +17,85 @@ class RoomeTile extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onTap,
+    return Container(
+      child: GestureDetector(
+        onTap: () => onTap,
+        child: Container(
+          margin: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
+          padding: const EdgeInsets.all(20),
+          width: Get.width / 2.5,
+          height: Get.height / 5.5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x33000000),
+                blurRadius: 3,
+                offset: Offset(-1.50, -1.50),
+              ),
+              BoxShadow(
+                color: Color(0x33000000),
+                blurRadius: 3,
+                offset: Offset(1.50, 1.50),
+              ),
+            ],
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SvgPicture.asset(img),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    roomName,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    lights,
+                    style: TextStyle(
+                      color: Colors.amber,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RoomTile extends StatelessWidget {
+  final String img;
+  final String roomName;
+  final String lights;
+  final VoidCallback onTap;
+
+  RoomTile({
+    required this.img,
+    required this.lights,
+    required this.onTap,
+    required this.roomName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: InkWell(
+      onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
         padding: const EdgeInsets.all(20),
-        width: Get.width / 2.5,
+        margin: const EdgeInsets.all(16),
+        width: Get.width / 2.8,
         height: Get.height / 5.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -41,33 +114,33 @@ class RoomeTile extends StatelessWidget {
           color: Colors.white,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SvgPicture.asset(img),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   roomName,
                   style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w800,
-                  ),
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20),
                 ),
                 Text(
                   lights,
                   style: TextStyle(
-                    color: Colors.amber,
-                    fontWeight: FontWeight.w600,
-                  ),
+                      color: Colors.amber,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15),
                 ),
               ],
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

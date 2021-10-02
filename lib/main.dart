@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_light/views/lightsPage.dart';
+// ignore: unused_import
+import 'package:smart_light/views/testHome(F).dart';
+import 'package:smart_light/views/HomePage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: LightsPage(),
+      home: HomePage(),
     );
   }
 }
