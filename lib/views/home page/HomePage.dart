@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color(0xFF0A4CA2),
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               margin: const EdgeInsets.only(

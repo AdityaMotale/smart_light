@@ -6,4 +6,5 @@ snackBar() => Get.snackbar(
       'The feature is being added!',
       colorText: Colors.black,
       icon: Icon(Icons.error),
+      duration: Duration(milliseconds: 1500),
     );

@@ -20,6 +20,7 @@ class LightPage extends StatelessWidget {
       backgroundColor: Color(0xFF0A4CA2),
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               child: Column(
@@ -33,6 +34,7 @@ class LightPage extends StatelessWidget {
                           children: [
                             AnimationConfiguration.synchronized(
                               child: SlideAnimation(
+                                curve: Curves.easeInOutQuint,
                                 duration: Duration(seconds: 1),
                                 child: Container(
                                   child: Column(
@@ -130,7 +132,7 @@ class LightPage extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          height: Get.height / 3.8,
+                          height: Get.height / 4,
                           child: SvgPicture.asset(
                             'assets/Circles.svg',
                             // height: Get.height / 3.8,
@@ -144,8 +146,11 @@ class LightPage extends StatelessWidget {
                     height: Get.height / 11,
                     child: AnimationConfiguration.staggeredList(
                       position: 0,
-                      child: FadeInAnimation(
-                        duration: Duration(seconds: 1),
+                      child: ScaleAnimation(
+                        curve: Curves.easeInToLinear,
+                        duration: Duration(
+                          milliseconds: 500,
+                        ),
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -179,141 +184,153 @@ class LightPage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 20),
               padding: const EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
-                  color: Color(0xfff6f7fb),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  )),
-              child: Column(
-                children: [
-                  featureTitle('Intensity'),
-                  Obx(
-                    () => Container(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                        right: 10,
+                color: Color(0xfff6f7fb),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
+                ),
+              ),
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: [
+                      featureTitle('Intensity'),
+                      Obx(
+                        () => Container(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            right: 10,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SvgPicture.asset('assets/solution1.svg'),
+                              Expanded(
+                                child: Slider(
+                                  value: light.intensity.value,
+                                  onChanged: (newIntensity) {
+                                    light.intensity.value = newIntensity;
+                                  },
+                                  divisions: 6,
+                                  min: 4,
+                                  max: 10,
+                                  activeColor: Color(0xffead093),
+                                  inactiveColor: Color(0xffffecbf),
+                                ),
+                              ),
+                              SvgPicture.asset('assets/solution.svg'),
+                            ],
+                          ),
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SvgPicture.asset('assets/solution1.svg'),
-                          Expanded(
-                            child: Slider(
-                              value: light.intensity.value,
-                              onChanged: (newIntensity) {
-                                light.intensity.value = newIntensity;
-                              },
-                              divisions: 6,
-                              min: 4,
-                              max: 10,
-                              activeColor: Color(0xffead093),
-                              inactiveColor: Color(0xffffecbf),
+                      featureTitle('Color'),
+                      AnimationConfiguration.synchronized(
+                        child: ScaleAnimation(
+                          delay: Duration(
+                            milliseconds: 100,
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 20, top: 15),
+                            child: Row(
+                              children: [
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xfffe9a9a),
+                                  onTap: () {
+                                    light.changeColor(0xfffe9a9a);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xff94eb9d),
+                                  onTap: () {
+                                    light.changeColor(0xff94eb9d);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xff94caec),
+                                  onTap: () {
+                                    light.changeColor(0xff94caec);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xffa494ec),
+                                  onTap: () {
+                                    light.changeColor(0xffa494ec);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xffde94ed),
+                                  onTap: () {
+                                    light.changeColor(0xffde94ed);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: Text(''),
+                                  color: Color(0xffead093),
+                                  onTap: () {
+                                    light.changeColor(0xffead093);
+                                  },
+                                ),
+                                ColorCircle(
+                                  child: SvgPicture.asset('assets/+.svg'),
+                                  color: Colors.white,
+                                  onTap: () {
+                                    snackBar();
+                                  },
+                                ),
+                              ],
                             ),
                           ),
-                          SvgPicture.asset('assets/solution.svg'),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  featureTitle('Color'),
-                  Container(
-                    padding: EdgeInsets.only(left: 20, top: 15),
-                    child: Row(
-                      children: [
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xfffe9a9a),
-                          onTap: () {
-                            light.changeColor(0xfffe9a9a);
-                          },
-                        ),
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xff94eb9d),
-                          onTap: () {
-                            light.changeColor(0xff94eb9d);
-                          },
-                        ),
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xff94caec),
-                          onTap: () {
-                            light.changeColor(0xff94caec);
-                          },
-                        ),
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xffa494ec),
-                          onTap: () {
-                            light.changeColor(0xffa494ec);
-                          },
-                        ),
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xffde94ed),
-                          onTap: () {
-                            light.changeColor(0xffde94ed);
-                          },
-                        ),
-                        ColorCircle(
-                          child: Text(''),
-                          color: Color(0xffead093),
-                          onTap: () {
-                            light.changeColor(0xffead093);
-                          },
-                        ),
-                        ColorCircle(
-                          child: SvgPicture.asset('assets/+.svg'),
-                          color: Colors.white,
-                          onTap: () {
-                            snackBar();
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  featureTitle('Scenes'),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      featureTitle('Scenes'),
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        child: Column(
                           children: [
-                            ScenesCard(
-                              sceneName: 'Birthday',
-                              initColor: Color(0xffff9b9b),
-                              finalColor: Color(0xffffb693),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ScenesCard(
+                                  sceneName: 'Birthday',
+                                  initColor: Color(0xffff9b9b),
+                                  finalColor: Color(0xffffb693),
+                                ),
+                                ScenesCard(
+                                  sceneName: 'Party',
+                                  initColor: Color(0xffa692eb),
+                                  finalColor: Color(0xffd291eb),
+                                ),
+                              ],
                             ),
-                            ScenesCard(
-                              sceneName: 'Party',
-                              initColor: Color(0xffa692eb),
-                              finalColor: Color(0xffd291eb),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ScenesCard(
+                                  sceneName: 'Relax',
+                                  initColor: Color(0xff92c8ea),
+                                  finalColor: Color(0xff92d9eb),
+                                ),
+                                ScenesCard(
+                                  sceneName: 'Fun',
+                                  initColor: Color(0xff89dc94),
+                                  finalColor: Color(0xffb8ea91),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ScenesCard(
-                              sceneName: 'Relax',
-                              initColor: Color(0xff92c8ea),
-                              finalColor: Color(0xff92d9eb),
-                            ),
-                            ScenesCard(
-                              sceneName: 'Fun',
-                              initColor: Color(0xff89dc94),
-                              finalColor: Color(0xffb8ea91),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                      ),
+                      bottomNavBar(),
+                    ],
+                  ),
+                ),
               ),
             ),
-            bottomNavBar(),
           ],
         ),
       ),
