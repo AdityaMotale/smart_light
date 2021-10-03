@@ -20,8 +20,8 @@ class ScenesCard extends StatelessWidget {
         onTap: () => snackBar(),
         child: Container(
           margin: const EdgeInsets.all(8),
-          width: Get.width / 2.5,
-          height: Get.height / 12,
+          width: Get.width / 2.3,
+          height: Get.height / 10,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             gradient: LinearGradient(
@@ -44,14 +44,11 @@ class ScenesCard extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              // Expanded(
-              //   child: Container(),
-              // ),
               Text(
                 sceneName,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: Get.width / 15,
                   fontWeight: FontWeight.w600,
                 ),
               ),

@@ -125,7 +125,7 @@ class HomePage extends StatelessWidget {
                               onTap: () => Get.to(() => LightPage(),
                                   arguments: {
                                     'lights': '5 Lights',
-                                    'room': '\nKitchen'
+                                    'room': 'Kitchen'
                                   }),
                             ),
                             RoomTile(
@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
                               onTap: () => Get.to(() => LightPage(),
                                   arguments: {
                                     'lights': '1 Light',
-                                    'room': '\nBathroom'
+                                    'room': 'Bathroom'
                                   }),
                             )
                           ],
@@ -150,7 +150,7 @@ class HomePage extends StatelessWidget {
                               onTap: () => Get.to(() => LightPage(),
                                   arguments: {
                                     'lights': '5 Lights',
-                                    'room': '\nOutdoor'
+                                    'room': 'Outdoor'
                                   }),
                             ),
                             RoomTile(
@@ -160,7 +160,7 @@ class HomePage extends StatelessWidget {
                               onTap: () => Get.to(() => LightPage(),
                                   arguments: {
                                     'lights': '2 Lights',
-                                    'room': '\nBalcony'
+                                    'room': 'Balcony'
                                   }),
                             )
                           ],

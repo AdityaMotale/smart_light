@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ColorCircle extends StatelessWidget {
   final Color color;
@@ -18,8 +19,8 @@ class ColorCircle extends StatelessWidget {
         onTap: onTap,
         child: Container(
           margin: const EdgeInsets.all(5),
-          width: 35,
-          height: 35,
+          width: Get.width / 10,
+          height: Get.width / 10,
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(25),

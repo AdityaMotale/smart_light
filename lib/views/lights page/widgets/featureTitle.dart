@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget featureTitle(String title) => Container(
       padding: const EdgeInsets.only(
@@ -10,7 +11,7 @@ Widget featureTitle(String title) => Container(
         title,
         style: TextStyle(
           color: Color(0xFF022D62),
-          fontSize: 25,
+          fontSize: Get.width / 15,
           fontWeight: FontWeight.w800,
         ),
       ),
