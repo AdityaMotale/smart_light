@@ -190,144 +190,145 @@ class LightPage extends StatelessWidget {
                   topRight: Radius.circular(25),
                 ),
               ),
-              child: SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                    children: [
-                      featureTitle('Intensity'),
-                      Obx(
-                        () => Container(
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                            right: 10,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SvgPicture.asset('assets/solution1.svg'),
-                              Expanded(
-                                child: Slider(
-                                  value: light.intensity.value,
-                                  onChanged: (newIntensity) {
-                                    light.intensity.value = newIntensity;
-                                  },
-                                  divisions: 6,
-                                  min: 4,
-                                  max: 10,
-                                  activeColor: Color(0xffead093),
-                                  inactiveColor: Color(0xffffecbf),
-                                ),
+              child: Container(
+                child: Column(
+                  children: [
+                    featureTitle('Intensity'),
+                    Obx(
+                      () => Container(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                          right: 10,
+                        ),
+                        child: Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SvgPicture.asset('assets/solution1.svg'),
+                            Expanded(
+                              child: Slider(
+                                value: light.intensity.value,
+                                onChanged: (newIntensity) {
+                                  light.intensity.value = newIntensity;
+                                },
+                                divisions: 6,
+                                min: 4,
+                                max: 10,
+                                activeColor: Color(0xffead093),
+                                inactiveColor: Color(0xffffecbf),
                               ),
-                              SvgPicture.asset('assets/solution.svg'),
+                            ),
+                            SvgPicture.asset('assets/solution.svg'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    featureTitle('Color'),
+                    AnimationConfiguration.synchronized(
+                      child: ScaleAnimation(
+                        delay: Duration(
+                          milliseconds: 100,
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.only(left: 20, top: 15),
+                          child: Row(
+                            children: [
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xfffe9a9a),
+                                onTap: () {
+                                  light.changeColor(0xfffe9a9a);
+                                },
+                              ),
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xff94eb9d),
+                                onTap: () {
+                                  light.changeColor(0xff94eb9d);
+                                },
+                              ),
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xff94caec),
+                                onTap: () {
+                                  light.changeColor(0xff94caec);
+                                },
+                              ),
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xffa494ec),
+                                onTap: () {
+                                  light.changeColor(0xffa494ec);
+                                },
+                              ),
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xffde94ed),
+                                onTap: () {
+                                  light.changeColor(0xffde94ed);
+                                },
+                              ),
+                              ColorCircle(
+                                child: Text(''),
+                                color: Color(0xffead093),
+                                onTap: () {
+                                  light.changeColor(0xffead093);
+                                },
+                              ),
+                              ColorCircle(
+                                child: SvgPicture.asset('assets/+.svg'),
+                                color: Colors.white,
+                                onTap: () {
+                                  snackBar();
+                                },
+                              ),
                             ],
                           ),
                         ),
                       ),
-                      featureTitle('Color'),
-                      AnimationConfiguration.synchronized(
-                        child: ScaleAnimation(
-                          delay: Duration(
-                            milliseconds: 100,
+                    ),
+                    featureTitle('Scenes'),
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ScenesCard(
+                                sceneName: 'Birthday',
+                                initColor: Color(0xffff9b9b),
+                                finalColor: Color(0xffffb693),
+                              ),
+                              ScenesCard(
+                                sceneName: 'Party',
+                                initColor: Color(0xffa692eb),
+                                finalColor: Color(0xffd291eb),
+                              ),
+                            ],
                           ),
-                          child: Container(
-                            padding: EdgeInsets.only(left: 20, top: 15),
-                            child: Row(
-                              children: [
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xfffe9a9a),
-                                  onTap: () {
-                                    light.changeColor(0xfffe9a9a);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xff94eb9d),
-                                  onTap: () {
-                                    light.changeColor(0xff94eb9d);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xff94caec),
-                                  onTap: () {
-                                    light.changeColor(0xff94caec);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffa494ec),
-                                  onTap: () {
-                                    light.changeColor(0xffa494ec);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffde94ed),
-                                  onTap: () {
-                                    light.changeColor(0xffde94ed);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffead093),
-                                  onTap: () {
-                                    light.changeColor(0xffead093);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: SvgPicture.asset('assets/+.svg'),
-                                  color: Colors.white,
-                                  onTap: () {
-                                    snackBar();
-                                  },
-                                ),
-                              ],
-                            ),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ScenesCard(
+                                sceneName: 'Relax',
+                                initColor: Color(0xff92c8ea),
+                                finalColor: Color(0xff92d9eb),
+                              ),
+                              ScenesCard(
+                                sceneName: 'Fun',
+                                initColor: Color(0xff89dc94),
+                                finalColor: Color(0xffb8ea91),
+                              ),
+                            ],
                           ),
-                        ),
+                        ],
                       ),
-                      featureTitle('Scenes'),
-                      Container(
-                        margin: const EdgeInsets.only(top: 5),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ScenesCard(
-                                  sceneName: 'Birthday',
-                                  initColor: Color(0xffff9b9b),
-                                  finalColor: Color(0xffffb693),
-                                ),
-                                ScenesCard(
-                                  sceneName: 'Party',
-                                  initColor: Color(0xffa692eb),
-                                  finalColor: Color(0xffd291eb),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ScenesCard(
-                                  sceneName: 'Relax',
-                                  initColor: Color(0xff92c8ea),
-                                  finalColor: Color(0xff92d9eb),
-                                ),
-                                ScenesCard(
-                                  sceneName: 'Fun',
-                                  initColor: Color(0xff89dc94),
-                                  finalColor: Color(0xffb8ea91),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      bottomNavBar(),
-                    ],
-                  ),
+                    ),
+                    bottomNavBar(),
+                  ],
                 ),
               ),
             ),

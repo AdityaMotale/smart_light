@@ -96,7 +96,7 @@ class RoomTile extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.all(13),
         width: Get.width / 2.6,
-        height: Get.height / 5.5,
+        // height: Get.height / 5.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
@@ -122,15 +122,18 @@ class RoomTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  roomName,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 20),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    roomName,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20),
+                  ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 5),
+                  margin: const EdgeInsets.only(top: 10),
                   child: Text(
                     lights,
                     style: TextStyle(
