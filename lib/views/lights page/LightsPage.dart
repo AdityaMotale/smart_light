@@ -9,6 +9,7 @@ import 'package:smart_light/views/lights%20page/widgets/colorPallete.dart';
 import 'package:smart_light/views/lights%20page/widgets/featureTitle.dart';
 import 'package:smart_light/views/lights%20page/widgets/lightSwitches.dart';
 import 'package:smart_light/views/lights%20page/widgets/scenesCard.dart';
+import 'package:smart_light/views/lights%20page/widgets/sliderMarks.dart';
 
 class LightPage extends StatelessWidget {
   final light = Get.put<LampLightController>(
@@ -32,87 +33,98 @@ class LightPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AnimationConfiguration.synchronized(
-                          child: SlideAnimation(
-                            curve: Curves.easeInOutQuint,
-                            duration: Duration(seconds: 1),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(15, 15, 0, 5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: GestureDetector(
-                                          onTap: () => Get.back(),
-                                          child: Container(
-                                            child: SvgPicture.asset(
-                                              'assets/ionic-md-arrow-round-back.svg',
-                                              height: 20,
-                                            ),
-                                          ),
+                                  Container(
+                                    child: GestureDetector(
+                                      onTap: () => Get.back(),
+                                      child: Container(
+                                        child: SvgPicture.asset(
+                                          'assets/ionic-md-arrow-round-back.svg',
+                                          height: 20,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        Get.arguments['room'],
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 30),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      top: 20,
-                                    ),
-                                    child: Text(
-                                      Get.arguments['lights'],
-                                      style: TextStyle(
-                                        color: Color(0xffFFA435),
-                                        fontSize: 25,
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    Get.arguments['room'],
+                                    style: TextStyle(
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                                        fontSize: 30),
                                   ),
                                 ],
                               ),
-                            ),
+                              AnimationConfiguration.synchronized(
+                                child: SlideAnimation(
+                                  verticalOffset: -50,
+                                  horizontalOffset: 0,
+                                  duration: Duration(seconds: 1),
+                                  child: ScaleAnimation(
+                                    duration: Duration(milliseconds: 250),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(
+                                        top: 20,
+                                      ),
+                                      child: Text(
+                                        Get.arguments['lights'],
+                                        style: TextStyle(
+                                          color: Color(0xffFFA435),
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         AnimationConfiguration.synchronized(
-                          child: FadeInAnimation(
-                            duration: Duration(
-                              seconds: 1,
-                            ),
-                            child: Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 20, 20),
-                              child: Column(
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/Group 38.svg',
-                                  ),
-                                  GetX<LampLightController>(
-                                    init: LampLightController(),
-                                    builder: (_) => Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(100),
-                                            bottomRight: Radius.circular(100)),
-                                        color: Color(_.color.value)
-                                            .withOpacity(light.oppacity.value),
-                                        shape: BoxShape.rectangle,
-                                      ),
-                                      height: 20,
-                                      width: 20,
+                          child: SlideAnimation(
+                            verticalOffset: -50,
+                            horizontalOffset: 0,
+                            duration: Duration(seconds: 1),
+                            child: ScaleAnimation(
+                              curve: Curves.easeIn,
+                              duration: Duration(
+                                milliseconds: 250,
+                              ),
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 20, 20),
+                                child: Column(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/Group 38.svg',
                                     ),
-                                  ),
-                                ],
+                                    GetX<LampLightController>(
+                                      init: LampLightController(),
+                                      builder: (_) => Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(100),
+                                              bottomRight:
+                                                  Radius.circular(100)),
+                                          color: Color(_.color.value)
+                                              .withOpacity(
+                                                  light.oppacity.value),
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                        height: 20,
+                                        width: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -130,33 +142,38 @@ class LightPage extends StatelessWidget {
                     height: Get.height / 11,
                     child: AnimationConfiguration.staggeredList(
                       position: 0,
-                      child: ScaleAnimation(
-                        curve: Curves.easeInToLinear,
-                        duration: Duration(
-                          milliseconds: 500,
-                        ),
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            LightSwitches(
-                              img: 'assets/surface1.svg',
-                              textColor: Color(0xFF022D62),
-                              color: Colors.white,
-                              switchName: 'Main Light',
-                            ),
-                            LightSwitches(
-                              img: 'assets/furniture-and-household.svg',
-                              textColor: Colors.white,
-                              color: Color(0xFF022D62),
-                              switchName: 'Desk Light',
-                            ),
-                            LightSwitches(
-                              img: 'assets/bed (1).svg',
-                              textColor: Color(0xFF022D62),
-                              color: Colors.white,
-                              switchName: 'Bed Light',
-                            ),
-                          ],
+                      child: SlideAnimation(
+                        verticalOffset: 0,
+                        horizontalOffset: -200,
+                        duration: Duration(seconds: 1),
+                        child: FadeInAnimation(
+                          curve: Curves.easeInToLinear,
+                          duration: Duration(
+                            milliseconds: 250,
+                          ),
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              LightSwitches(
+                                img: 'assets/surface1.svg',
+                                textColor: Color(0xFF022D62),
+                                color: Colors.white,
+                                switchName: 'Main Light',
+                              ),
+                              LightSwitches(
+                                img: 'assets/furniture-and-household.svg',
+                                textColor: Colors.white,
+                                color: Color(0xFF022D62),
+                                switchName: 'Desk Light',
+                              ),
+                              LightSwitches(
+                                img: 'assets/bed (1).svg',
+                                textColor: Color(0xFF022D62),
+                                color: Colors.white,
+                                switchName: 'Bed Light',
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -183,21 +200,28 @@ class LightPage extends StatelessWidget {
                         children: [
                           featureTitle('Intensity'),
                           Container(
-                            alignment: Alignment.centerRight,
-                            padding: const EdgeInsets.only(
-                              right: 30,
-                              top: 15,
-                            ),
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              ),
-                              child: SvgPicture.asset(
-                                'assets/awesome-power-off.svg',
-                                semanticsLabel: 'Switch Off',
+                            child: GestureDetector(
+                              onTap: () {
+                                light.lightSwitch();
+                              },
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                padding: const EdgeInsets.only(
+                                  right: 30,
+                                  top: 15,
+                                ),
+                                child: Container(
+                                  height: 25,
+                                  width: 25,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: Colors.white,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    'assets/awesome-power-off.svg',
+                                    semanticsLabel: 'Switch Off',
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -210,20 +234,47 @@ class LightPage extends StatelessWidget {
                             right: 15,
                           ),
                           child: Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SvgPicture.asset('assets/solution1.svg'),
                               Expanded(
-                                child: Slider(
-                                  value: light.oppacity.value,
-                                  onChanged: (newIntensity) {
-                                    light.oppacity.value = newIntensity;
-                                  },
-                                  divisions: 6,
-                                  // min: 0,
-                                  // max: 1,
-                                  activeColor: Color(0xffead093),
-                                  inactiveColor: Color(0xffffecbf),
+                                child: Column(
+                                  children: [
+                                    AnimationConfiguration.synchronized(
+                                      child: SlideAnimation(
+                                        curve: Curves.easeInOut,
+                                        horizontalOffset: -100,
+                                        duration: Duration(milliseconds: 750),
+                                        child: FadeInAnimation(
+                                          curve: Curves.easeIn,
+                                          duration: Duration(milliseconds: 250),
+                                          child: Slider(
+                                            value: light.oppacity.value,
+                                            onChanged: (newIntensity) {
+                                              light.oppacity.value =
+                                                  newIntensity;
+                                            },
+                                            divisions: 6,
+                                            min: 0,
+                                            max: 1,
+                                            activeColor: Color(0xffead093),
+                                            inactiveColor: Color(0xffffecbf),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        sliderMark(),
+                                        sliderMark(),
+                                        sliderMark(),
+                                        sliderMark(),
+                                        sliderMark(),
+                                        sliderMark(),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                               SvgPicture.asset('assets/solution.svg'),
@@ -233,64 +284,70 @@ class LightPage extends StatelessWidget {
                       ),
                       featureTitle('Color'),
                       AnimationConfiguration.synchronized(
-                        child: ScaleAnimation(
-                          delay: Duration(
-                            milliseconds: 900,
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.only(left: 20, top: 15),
-                            child: Row(
-                              children: [
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xfffe9a9a),
-                                  onTap: () {
-                                    light.changeColor(0xfffe9a9a);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xff94eb9d),
-                                  onTap: () {
-                                    light.changeColor(0xff94eb9d);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xff94caec),
-                                  onTap: () {
-                                    light.changeColor(0xff94caec);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffa494ec),
-                                  onTap: () {
-                                    light.changeColor(0xffa494ec);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffde94ed),
-                                  onTap: () {
-                                    light.changeColor(0xffde94ed);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: Text(''),
-                                  color: Color(0xffead093),
-                                  onTap: () {
-                                    light.changeColor(0xffead093);
-                                  },
-                                ),
-                                ColorCircle(
-                                  child: SvgPicture.asset('assets/+.svg'),
-                                  color: Colors.white,
-                                  onTap: () {
-                                    snackBar();
-                                  },
-                                ),
-                              ],
+                        child: SlideAnimation(
+                          horizontalOffset: -200,
+                          verticalOffset: 0,
+                          duration: Duration(seconds: 1),
+                          child: FadeInAnimation(
+                            curve: Curves.linear,
+                            delay: Duration(
+                              milliseconds: 250,
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.only(left: 20, top: 15),
+                              child: Row(
+                                children: [
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xfffe9a9a),
+                                    onTap: () {
+                                      light.changeColor(0xfffe9a9a);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xff94eb9d),
+                                    onTap: () {
+                                      light.changeColor(0xff94eb9d);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xff94caec),
+                                    onTap: () {
+                                      light.changeColor(0xff94caec);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xffa494ec),
+                                    onTap: () {
+                                      light.changeColor(0xffa494ec);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xffde94ed),
+                                    onTap: () {
+                                      light.changeColor(0xffde94ed);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: Text(''),
+                                    color: Color(0xffead093),
+                                    onTap: () {
+                                      light.changeColor(0xffead093);
+                                    },
+                                  ),
+                                  ColorCircle(
+                                    child: SvgPicture.asset('assets/+.svg'),
+                                    color: Colors.white,
+                                    onTap: () {
+                                      snackBar();
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
