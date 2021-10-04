@@ -4,9 +4,9 @@ Assignment for the Folks Developers (The TouchStone Foundation).
 
 
 
-|              Home Page              |             Lights Page           |
+|              App Preview              |             Lights Page           |
 | :----------------------------------: | :----------------------------------: |
-| ![Home](assets/home.png) | ![Lights](assets/lights.png) 
+| ![Home](assets/appPreview.gif) | ![Lights](assets/lights.png) 
 
 ### Packages I've used
 

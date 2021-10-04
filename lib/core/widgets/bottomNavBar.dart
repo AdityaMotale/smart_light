@@ -17,10 +17,6 @@ Widget bottomNavBar() => Container(
           ),
         ),
       ]),
-      padding: const EdgeInsets.only(
-        // bottom: 15,
-        top: 5,
-      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

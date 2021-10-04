@@ -94,8 +94,8 @@ class RoomTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.all(13),
-        width: Get.width / 2.6,
+        margin: const EdgeInsets.all(10),
+        width: Get.width / 2.4,
         // height: Get.height / 5.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),

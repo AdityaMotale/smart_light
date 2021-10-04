@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
                 right: 5,
                 left: 5,
               ),
-              height: Get.height / 5,
+              height: Get.height / 4.5,
               child: Stack(
                 alignment: AlignmentDirectional.center,
                 clipBehavior: Clip.hardEdge,
@@ -64,113 +64,105 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              child: Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF6F7FB),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF6F7FB),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
                     ),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 15, left: 40),
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'All Rooms',
-                            style: TextStyle(
-                              color: Color(0xFF022D62),
-                              fontSize: Get.width / 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, left: 40),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'All Rooms',
+                          style: TextStyle(
+                            color: Color(0xFF022D62),
+                            fontSize: Get.width / 16,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoomTile(
-                              lights: '4 Lights',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '4 Lights',
-                                    'room': '\nBed\nRoom'
-                                  }),
-                              img: 'assets/bed.svg',
-                              roomName: 'Bed Room',
-                            ),
-                            RoomTile(
-                              lights: '2 Lights',
-                              img: 'assets/room.svg',
-                              roomName: 'Living Room',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '2 Lights',
-                                    'room': '\nLiving\nRoom'
-                                  }),
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoomTile(
-                              lights: '5 Lights',
-                              img: 'assets/kitchen.svg',
-                              roomName: 'Kitchen',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '5 Lights',
-                                    'room': 'Kitchen'
-                                  }),
-                            ),
-                            RoomTile(
-                              lights: '1 Light',
-                              img: 'assets/bathtube.svg',
-                              roomName: 'Bathroom',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '1 Light',
-                                    'room': 'Bathroom'
-                                  }),
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoomTile(
-                              lights: '5 Lights',
-                              img: 'assets/house.svg',
-                              roomName: 'Outdoor',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '5 Lights',
-                                    'room': 'Outdoor'
-                                  }),
-                            ),
-                            RoomTile(
-                              lights: '2 Lights',
-                              img: 'assets/balcony.svg',
-                              roomName: 'Balcony',
-                              onTap: () => Get.to(() => LightPage(),
-                                  arguments: {
-                                    'lights': '2 Lights',
-                                    'room': 'Balcony'
-                                  }),
-                            )
-                          ],
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          child: bottomNavBar(),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoomTile(
+                            lights: '4 Lights',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '4 Lights',
+                              'room': '\nBed\nRoom'
+                            }),
+                            img: 'assets/bed.svg',
+                            roomName: 'Bed Room',
+                          ),
+                          RoomTile(
+                            lights: '2 Lights',
+                            img: 'assets/room.svg',
+                            roomName: 'Living Room',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '2 Lights',
+                              'room': '\nLiving\nRoom'
+                            }),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoomTile(
+                            lights: '5 Lights',
+                            img: 'assets/kitchen.svg',
+                            roomName: 'Kitchen',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '5 Lights',
+                              'room': 'Kitchen'
+                            }),
+                          ),
+                          RoomTile(
+                            lights: '1 Light',
+                            img: 'assets/bathtube.svg',
+                            roomName: 'Bathroom',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '1 Light',
+                              'room': 'Bathroom'
+                            }),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoomTile(
+                            lights: '5 Lights',
+                            img: 'assets/house.svg',
+                            roomName: 'Outdoor',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '5 Lights',
+                              'room': 'Outdoor'
+                            }),
+                          ),
+                          RoomTile(
+                            lights: '2 Lights',
+                            img: 'assets/balcony.svg',
+                            roomName: 'Balcony',
+                            onTap: () => Get.to(() => LightPage(), arguments: {
+                              'lights': '2 Lights',
+                              'room': 'Balcony'
+                            }),
+                          )
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 18),
+                        child: bottomNavBar(),
+                      ),
+                    ],
                   ),
                 ),
               ),

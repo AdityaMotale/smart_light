@@ -391,7 +391,6 @@ class LightPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.all(5),
                         child: bottomNavBar(),
                       ),
                     ],
