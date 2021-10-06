@@ -127,9 +127,10 @@ class RoomTile extends StatelessWidget {
                   child: Text(
                     roomName,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 20),
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
                 Container(
